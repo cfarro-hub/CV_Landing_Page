@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TailorCV | Stop Guessing. Start Landing.</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Smooth scrolling for anchor links */
+        html { scroll-behavior: smooth; }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800 font-sans antialiased">
+
+    <nav class="bg-white shadow-sm fixed w-full z-10 top-0">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16 items-center">
+                <div class="flex-shrink-0 font-bold text-2xl text-blue-600">
+                    TailorCV
+                </div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="#features" class="text-gray-600 hover:text-blue-600">Features</a>
+                    <a href="#how-it-works" class="text-gray-600 hover:text-blue-600">How it Works</a>
+                    <a href="#pricing" class="text-gray-600 hover:text-blue-600">Pricing</a>
+                </div>
+                <div class="flex space-x-4">
+                    <a href="#" class="text-gray-600 hover:text-blue-600 px-3 py-2 font-medium">Log In</a>
+                    <a href="#" class="bg-blue-600 text-white px-4 py-2 rounded-md font-medium hover:bg-blue-700 transition">Get Started Free</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <section class="pt-32 pb-20 bg-gradient-to-br from-blue-50 to-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h1 class="text-5xl font-extrabold text-gray-900 tracking-tight mb-6">
+                Stop Guessing. <span class="text-blue-600">Start Landing.</span>
+            </h1>
+            <p class="text-xl text-gray-600 max-w-2xl mx-auto mb-10">
+                You don’t lack experience; you just need the right angle. Automatically tailor your CV to any job description in seconds, and practice your answers with our real-time AI Interviewer. 
+            </p>
+            <div class="flex justify-center gap-4 mb-16">
+                <a href="#" class="bg-blue-600 text-white px-8 py-4 rounded-lg font-bold text-lg hover:bg-blue-700 transition shadow-lg">Build Your Tailored CV (Free)</a>
+                <a href="#pricing" class="bg-white text-blue-600 border border-blue-600 px-8 py-4 rounded-lg font-bold text-lg hover:bg-blue-50 transition">View Premium</a>
+            </div>
+
+            <div class="max-w-3xl mx-auto bg-white rounded-xl shadow-xl p-8 border border-gray-100">
+                <h3 class="text-2xl font-bold mb-2">Try the ATS Scanner</h3>
+                <p class="text-gray-500 mb-6">Enter a job title to see the exact skills recruiters are filtering for today.</p>
+                
+                <div class="flex gap-2">
+                    <input type="text" id="jobInput" placeholder="e.g., Junior Marketing Associate" class="flex-1 px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-600 outline-none">
+                    <button onclick="fetchKeywords()" class="bg-gray-900 text-white px-6 py-3 rounded-lg font-semibold hover:bg-gray-800 transition">Find Keywords</button>
+                </div>
+                
+                <div id="loading" class="hidden mt-6 text-blue-600 font-medium">
+                    <span class="animate-pulse">Scraping live job boards via API...</span>
+                </div>
+
+                <div id="results" class="hidden mt-6 text-left border-t pt-6">
+                    <p class="font-semibold text-gray-700 mb-3">🔥 Top Trending ATS Keywords for <span id="displayJob" class="text-blue-600"></span>:</p>
+                    <div class="flex flex-wrap gap-2" id="keywordBadges">
+                        </div>
+                    <p class="text-sm text-gray-400 mt-4">*Data simulated for demonstration. In production, this pulls from live market APIs.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-20 bg-white" id="how-it-works">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-3xl font-bold mb-12">Sending the same resume everywhere? <br><span class="text-red-500">That's why you're getting ghosted.</span></h2>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="p-6 bg-gray-50 rounded-lg">
+                    <div class="text-4xl mb-4">🤖</div>
+                    <h3 class="text-xl font-bold mb-2">The ATS Trap</h3>
+                    <p class="text-gray-600">75% of resumes are rejected by applicant tracking software before a human ever sees them because they lack specific keywords.</p>
+                </div>
+                <div class="p-6 bg-gray-50 rounded-lg">
+                    <div class="text-4xl mb-4">🎓</div>
+                    <h3 class="text-xl font-bold mb-2">The Experience Paradox</h3>
+                    <p class="text-gray-600">Need a job to get experience, but experience to get a job? We help reframe your academic projects as hard professional wins.</p>
+                </div>
+                <div class="p-6 bg-gray-50 rounded-lg">
+                    <div class="text-4xl mb-4">🥶</div>
+                    <h3 class="text-xl font-bold mb-2">The Interview Freeze</h3>
+                    <p class="text-gray-600">Passing the screen is half the battle. Interview anxiety ruins great opportunities without a safe space to practice.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-20 bg-gray-900 text-white" id="features">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-2 gap-16 items-center">
+                <div>
+                    <h2 class="text-3xl font-bold mb-6">The Dynamic CV Tailor</h2>
+                    <p class="text-gray-400 mb-6">Upload your base resume. Paste the job link. Let the AI do the rest.</p>
+                    <ul class="space-y-4">
+                        <li class="flex items-start"><span class="text-green-400 mr-2">✓</span> <strong>Smart Parsing:</strong> We analyze the exact job description you want.</li>
+                        <li class="flex items-start"><span class="text-green-400 mr-2">✓</span> <strong>Keyword Optimization:</strong> Automatically re-writes your bullet points to match.</li>
+                        <li class="flex items-start"><span class="text-green-400 mr-2">✓</span> <strong>ATS Formatting:</strong> Clean, machine-readable PDFs.</li>
+                    </ul>
+                </div>
+                <div>
+                    <h2 class="text-3xl font-bold mb-6">The AI Interview Coach</h2>
+                    <p class="text-gray-400 mb-6">Practice makes perfect, especially when no one is judging.</p>
+                    <ul class="space-y-4">
+                        <li class="flex items-start"><span class="text-blue-400 mr-2">✓</span> <strong>Role-Specific Questions:</strong> Generates questions based on the job link.</li>
+                        <li class="flex items-start"><span class="text-blue-400 mr-2">✓</span> <strong>Real-Time Voice:</strong> Speak and get instant feedback on confidence.</li>
+                        <li class="flex items-start"><span class="text-blue-400 mr-2">✓</span> <strong>Curveball Generation:</strong> Practice tough behavioral questions safely.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-20 bg-gray-50" id="pricing">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-3xl font-bold mb-4">Start landing interviews today.</h2>
+            <p class="text-gray-600 mb-12">Upgrade when you're ready to scale your search.</p>
+            
+            <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto text-left">
+                <div class="bg-white p-8 rounded-2xl shadow-sm border border-gray-200">
+                    <h3 class="text-2xl font-bold mb-2">Basic</h3>
+                    <p class="text-gray-500 mb-6">Free Forever</p>
+                    <ul class="space-y-3 mb-8">
+                        <li class="flex items-center text-gray-700"><span class="text-green-500 mr-2">✓</span> 1 Base Profile</li>
+                        <li class="flex items-center text-gray-700"><span class="text-green-500 mr-2">✓</span> 5 Tailored CVs / month</li>
+                        <li class="flex items-center text-gray-700"><span class="text-green-500 mr-2">✓</span> Standard Job Parsing</li>
+                        <li class="flex items-center text-gray-700"><span class="text-green-500 mr-2">✓</span> 1 AI Mock Interview / month</li>
+                        <li class="flex items-center text-gray-400"><span class="mr-2">✗</span> Text-only feedback</li>
+                    </ul>
+                    <a href="#" class="block text-center bg-gray-900 text-white py-3 rounded-lg font-bold hover:bg-gray-800 transition">Start for Free</a>
+                </div>
+
+                <div class="bg-blue-600 p-8 rounded-2xl shadow-xl text-white relative transform md:-translate-y-4">
+                    <div class="absolute top-0 right-0 bg-yellow-400 text-yellow-900 text-xs font-bold px-3 py-1 rounded-bl-lg rounded-tr-xl uppercase tracking-wider">Most Popular</div>
+                    <h3 class="text-2xl font-bold mb-2">Premium</h3>
+                    <p class="text-blue-200 mb-6">$12 / month</p>
+                    <ul class="space-y-3 mb-8">
+                        <li class="flex items-center"><span class="text-white mr-2">✓</span> Unlimited Base Profiles</li>
+                        <li class="flex items-center"><span class="text-white mr-2">✓</span> Unlimited Tailored CVs</li>
+                        <li class="flex items-center"><span class="text-white mr-2">✓</span> Deep-Scrape (Hidden ATS keywords)</li>
+                        <li class="flex items-center"><span class="text-white mr-2">✓</span> Unlimited AI Mock Interviews</li>
+                        <li class="flex items-center"><span class="text-white mr-2">✓</span> Real-time audio coaching</li>
+                    </ul>
+                    <a href="#" class="block text-center bg-white text-blue-600 py-3 rounded-lg font-bold hover:bg-gray-100 transition">Go Premium</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-white border-t border-gray-200 py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-2xl font-bold mb-6">Your degree is done. Your career starts here.</h2>
+            <a href="#" class="inline-block bg-blue-600 text-white px-8 py-3 rounded-lg font-bold hover:bg-blue-700 transition mb-8">Create Your Free Account Now</a>
+            <div class="text-sm text-gray-500 flex justify-center space-x-6">
+                <a href="#" class="hover:text-gray-900">Privacy Policy</a>
+                <a href="#" class="hover:text-gray-900">Terms of Service</a>
+                <a href="#" class="hover:text-gray-900">Contact Us</a>
+            </div>
+            <p class="mt-8 text-gray-400 text-sm">Made for Grads everywhere. © 2026 TailorCV.</p>
+        </div>
+    </footer>
+
+    <script>
+        function fetchKeywords() {
+            const input = document.getElementById('jobInput').value;
+            if (!input) {
+                alert("Please enter a job title first!");
+                return;
+            }
+
+            // UI State: Loading
+            document.getElementById('results').classList.add('hidden');
+            document.getElementById('loading').classList.remove('hidden');
+            
+            // Simulate API Network Delay (1.5 seconds)
+            setTimeout(() => {
+                document.getElementById('loading').classList.add('hidden');
+                document.getElementById('results').classList.remove('hidden');
+                document.getElementById('displayJob').innerText = input;
+                
+                // Mock logic to return different keywords based on input text
+                const keywords = getMockKeywords(input.toLowerCase());
+                const badgeContainer = document.getElementById('keywordBadges');
+                
+                badgeContainer.innerHTML = keywords.map(kw => 
+                    `<span class="bg-blue-100 text-blue-800 text-sm font-semibold px-3 py-1 rounded-full">${kw}</span>`
+                ).join('');
+
+            }, 1500);
+        }
+
+        // Simple mock function to return relevant keywords
+        function getMockKeywords(jobTitle) {
+            if (jobTitle.includes('market') || jobTitle.includes('seo')) {
+                return ['SEO/SEM', 'Content Strategy', 'Google Analytics', 'Campaign Management', 'Copywriting'];
+            } else if (jobTitle.includes('software') || jobTitle.includes('develop') || jobTitle.includes('engineer')) {
+                return ['Agile Methodologies', 'Git Version Control', 'RESTful APIs', 'Problem Solving', 'System Design'];
+            } else if (jobTitle.includes('design') || jobTitle.includes('ui') || jobTitle.includes('ux')) {
+                return ['Figma', 'User Research', 'Wireframing', 'Prototyping', 'Adobe Creative Suite'];
+            } else {
+                return ['Project Management', 'Cross-functional Collaboration', 'Data Analysis', 'Client Communication', 'Problem Solving'];
+            }
+        }
+    </script>
+</body>
+</html>
